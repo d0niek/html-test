@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draft Page - HTML Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .draft-badge {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .info-box {
+            background-color: #e9f7ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .sample-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .sample-form input, .sample-form textarea, .sample-form select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .sample-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .sample-form button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="draft-badge">Draft</div>
+        
+        <h1>HTML Test Draft Page</h1>
+        
+        <div class="info-box">
+            <strong>Note:</strong> This is a draft page created for testing HTML elements and functionality.
+        </div>
+
+        <h2>Overview</h2>
+        <p>This page serves as a comprehensive test for various HTML elements and features. It includes:</p>
+        <ul>
+            <li>Basic HTML structure and semantic elements</li>
+            <li>CSS styling and layout</li>
+            <li>Form elements and interactions</li>
+            <li>Tables and data presentation</li>
+            <li>Navigation and accessibility features</li>
+        </ul>
+
+        <h2>Sample Content</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+
+        <blockquote>
+            "This is a sample blockquote to test text formatting and styling."
+        </blockquote>
+
+        <h2>Sample Form</h2>
+        <div class="sample-form">
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="">Select a category</option>
+                    <option value="general">General</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="support">Support</option>
+                </select>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <h2>Sample Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML Structure</td>
+                    <td>Complete</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>CSS Styling</td>
+                    <td>In Progress</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>JavaScript Functionality</td>
+                    <td>Planned</td>
+                    <td>Low</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Navigation Links</h2>
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#content">Content</a></li>
+                <li><a href="#form">Form</a></li>
+                <li><a href="#table">Table</a></li>
+            </ul>
+        </nav>
+
+        <div class="footer">
+            <p>&copy; 2024 HTML Test Project - Draft Version</p>
+            <p>Last updated: <time datetime="2024-01-01">January 1, 2024</time></p>
+        </div>
+    </div>
+</body>
+</html>
