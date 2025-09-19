@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group input.valid {
+            border-color: #28a745;
+        }
+
+        .form-group input.invalid {
+            border-color: #dc3545;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #28a745;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .form-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="form-title">Register</h1>
+        <form id="registrationForm" novalidate>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <div class="error-message" id="firstNameError">Please enter your first name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <div class="error-message" id="lastNameError">Please enter your last name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+                <div class="success-message" id="emailSuccess">Valid email format</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+                <div class="error-message" id="phoneError">Please enter a valid phone number</div>
+                <div class="success-message" id="phoneSuccess">Valid phone number</div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="18" max="120" required>
+                <div class="error-message" id="ageError">You must be 18 years or older to register</div>
+                <div class="success-message" id="ageSuccess">Age verified (18+)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="error-message" id="passwordError">Password must be at least 6 characters long</div>
+                <div class="success-message" id="passwordSuccess">Strong password</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="error-message" id="confirmPasswordError">Passwords do not match</div>
+                <div class="success-message" id="confirmPasswordSuccess">Passwords match</div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Register</button>
+
+            <div class="form-success" id="formSuccess">
+                Registration successful! Welcome aboard! 🎉
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Form elements
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const formSuccess = document.getElementById('formSuccess');
+
+        // Input fields
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const age = document.getElementById('age');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+
+        // Validation patterns
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phonePattern = /^[\+]?[1-9]?[\W]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+
+        // Validation functions
+        function validateField(field, condition, errorId, successId, errorMessage) {
+            const errorElement = document.getElementById(errorId);
+            const successElement = document.getElementById(successId);
+            
+            if (condition) {
+                field.classList.remove('invalid');
+                field.classList.add('valid');
+                errorElement.style.display = 'none';
+                if (successElement) {
+                    successElement.style.display = 'block';
+                }
+                return true;
+            } else {
+                field.classList.remove('valid');
+                field.classList.add('invalid');
+                errorElement.textContent = errorMessage;
+                errorElement.style.display = 'block';
+                if (successElement) {
+                    successElement.style.display = 'none';
+                }
+                return false;
+            }
+        }
+
+        function validateFirstName() {
+            return validateField(
+                firstName,
+                firstName.value.trim().length >= 2,
+                'firstNameError',
+                null,
+                'First name must be at least 2 characters long'
+            );
+        }
+
+        function validateLastName() {
+            return validateField(
+                lastName,
+                lastName.value.trim().length >= 2,
+                'lastNameError',
+                null,
+                'Last name must be at least 2 characters long'
+            );
+        }
+
+        function validateEmail() {
+            return validateField(
+                email,
+                emailPattern.test(email.value),
+                'emailError',
+                'emailSuccess',
+                'Please enter a valid email address'
+            );
+        }
+
+        function validatePhone() {
+            return validateField(
+                phone,
+                phonePattern.test(phone.value),
+                'phoneError',
+                'phoneSuccess',
+                'Please enter a valid phone number (e.g., (123) 456-7890)'
+            );
+        }
+
+        function validateAge() {
+            const ageValue = parseInt(age.value);
+            return validateField(
+                age,
+                ageValue >= 18 && ageValue <= 120,
+                'ageError',
+                'ageSuccess',
+                'You must be 18 years or older to register'
+            );
+        }
+
+        function validatePassword() {
+            return validateField(
+                password,
+                password.value.length >= 6,
+                'passwordError',
+                'passwordSuccess',
+                'Password must be at least 6 characters long'
+            );
+        }
+
+        function validateConfirmPassword() {
+            return validateField(
+                confirmPassword,
+                confirmPassword.value === password.value && confirmPassword.value.length > 0,
+                'confirmPasswordError',
+                'confirmPasswordSuccess',
+                'Passwords do not match'
+            );
+        }
+
+        function checkFormValidity() {
+            const isValid = validateFirstName() && 
+                           validateLastName() && 
+                           validateEmail() && 
+                           validatePhone() && 
+                           validateAge() && 
+                           validatePassword() && 
+                           validateConfirmPassword();
+            
+            submitBtn.disabled = !isValid;
+            return isValid;
+        }
+
+        // Phone number formatting
+        function formatPhoneNumber(value) {
+            const phoneNumber = value.replace(/\D/g, '');
+            const phoneNumberLength = phoneNumber.length;
+            
+            if (phoneNumberLength < 4) return phoneNumber;
+            if (phoneNumberLength < 7) {
+                return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+            }
+            return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+        }
+
+        // Event listeners for real-time validation
+        firstName.addEventListener('input', () => {
+            validateFirstName();
+            checkFormValidity();
+        });
+
+        lastName.addEventListener('input', () => {
+            validateLastName();
+            checkFormValidity();
+        });
+
+        email.addEventListener('input', () => {
+            validateEmail();
+            checkFormValidity();
+        });
+
+        phone.addEventListener('input', (e) => {
+            const formatted = formatPhoneNumber(e.target.value);
+            e.target.value = formatted;
+            validatePhone();
+            checkFormValidity();
+        });
+
+        age.addEventListener('input', () => {
+            validateAge();
+            checkFormValidity();
+        });
+
+        password.addEventListener('input', () => {
+            validatePassword();
+            if (confirmPassword.value) {
+                validateConfirmPassword();
+            }
+            checkFormValidity();
+        });
+
+        confirmPassword.addEventListener('input', () => {
+            validateConfirmPassword();
+            checkFormValidity();
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (checkFormValidity()) {
+                // Hide form and show success message
+                form.style.display = 'none';
+                formSuccess.style.display = 'block';
+                
+                // In a real application, you would send the data to a server
+                console.log('Form submitted successfully with data:', {
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    email: email.value,
+                    phone: phone.value,
+                    age: age.value
+                });
+                
+                // Reset form after 3 seconds (optional)
+                setTimeout(() => {
+                    form.style.display = 'block';
+                    formSuccess.style.display = 'none';
+                    form.reset();
+                    
+                    // Clear all validation classes
+                    const inputs = form.querySelectorAll('input');
+                    inputs.forEach(input => {
+                        input.classList.remove('valid', 'invalid');
+                    });
+                    
+                    // Hide all messages
+                    const messages = form.querySelectorAll('.error-message, .success-message');
+                    messages.forEach(message => {
+                        message.style.display = 'none';
+                    });
+                    
+                    submitBtn.disabled = true;
+                }, 3000);
+            }
+        });
+
+        // Initial form validation check
+        checkFormValidity();
+    </script>
+</body>
+</html>
